@@ -11,7 +11,7 @@ mongoose.connect('mongodb+srv://virendra94:Virmongo@cluster0.lft28qr.mongodb.net
 
 app.use(cors(
   {
-  origin: ["https://code-inbound-assessment-sigma.vercel.app/"],
+  origin: ["https://code-inbound-assessment-sigma.vercel.app"],
   methods: ["POST","GET"],
   credentials: true
   }
