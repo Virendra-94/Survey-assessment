@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     // Fetch questions from the backend
-    axios.get('http://localhost:5000/api/questions')
+    axios.get('https://survey-assessment.vercel.app/api/questions')
       .then(response => {
         console.log(response.data);
         setQuestions(response.data);
@@ -66,7 +66,7 @@ const App = () => {
     }));
   
     // Send session ID and answers to the backend
-    axios.post('http://localhost:5000/api/save-answer', { answers: answersArray, sessionId: generateSessionId() })
+    axios.post('https://survey-assessment.vercel.app/api/save-answer', { answers: answersArray, sessionId: generateSessionId() })
       .then(response => {
         if (response.data.success) {
           setCompleted(true);
