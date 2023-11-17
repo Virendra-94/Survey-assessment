@@ -8,6 +8,12 @@ const port = 5000;
 
 // Connect to MongoDB (Replace 'your_mongodb_connection_string' with your MongoDB connection string)
 mongoose.connect('mongodb+srv://virendra94:Virmongo@cluster0.lft28qr.mongodb.net/Survey?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://code-inbound-assessment-sigma.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
 app.use(cors({
     origin: 'https://code-inbound-assessment-sigma.vercel.app'
 }));
