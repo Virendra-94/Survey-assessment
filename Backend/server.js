@@ -9,7 +9,13 @@ const port = 5000;
 // Connect to MongoDB (Replace 'your_mongodb_connection_string' with your MongoDB connection string)
 mongoose.connect('mongodb+srv://virendra94:Virmongo@cluster0.lft28qr.mongodb.net/Survey?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use(cors());
+app.use(cors(
+  {
+  origin: ["https://code-inbound-assessment-sigma.vercel.app/"],
+  methods: ["POST","GET"],
+  credentials: true
+  }
+));
 app.use(bodyParser.json());
 
 // Define MongoDB Schema for answers
