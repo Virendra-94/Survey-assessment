@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './App.css'; 
-
+axios.defaults.withCredentials = true;
 const WelcomePage = ({ onStartSurvey }) => (
   <div className="welcome-page">
     <h1>Welcome to the Survey!</h1>
