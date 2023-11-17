@@ -16,7 +16,7 @@ app.use((req,res,next)=>{
 })
 app.use(cors(
   {
-  Access-Control-Allow-Origin: ["https://code-inbound-assessment-sigma.vercel.app/"],
+  origin: ["https://code-inbound-assessment-sigma.vercel.app/"],
   methods: ["POST","GET"],
   credentials: true
   }
@@ -60,7 +60,7 @@ const generateSessionId = () => {
   return sessionId;
 };
 
-app.get('/api/questions', async (req, res) => {
+app.get('/api/questions', cors(),async (req, res) => {
     try {
       const questions = await Questions.find();
       //console.log('Fetched questions:', questions); // Log the fetched questions
@@ -72,7 +72,7 @@ app.get('/api/questions', async (req, res) => {
   });
 
   
-app.post('/api/save-answer', async (req, res) => {
+app.post('/api/save-answer', cors(),async (req, res) => {
   const { answers, sessionId } = req.body;
 
   try {
