@@ -8,19 +8,12 @@ const port = 5000;
 
 // Connect to MongoDB (Replace 'your_mongodb_connection_string' with your MongoDB connection string)
 mongoose.connect('mongodb+srv://virendra94:Virmongo@cluster0.lft28qr.mongodb.net/Survey?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-    next(); 
-})
-app.use(cors(
-  {
-  origin: ["https://code-inbound-assessment-sigma.vercel.app/"],
-  methods: ["POST","GET"],
-  credentials: true
-  }
-));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://code-inbound-assessment-sigma.vercel.app/"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.use(cors());
 app.use(bodyParser.json());
 
 // Define MongoDB Schema for answers
